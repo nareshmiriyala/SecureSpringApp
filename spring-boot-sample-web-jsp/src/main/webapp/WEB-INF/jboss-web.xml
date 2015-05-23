@@ -1,0 +1,4 @@
+<jboss-web>
+    <context-root>springapp</context-root>
+    <security-domain>BadmintonAccount</security-domain>
+</jboss-web>
