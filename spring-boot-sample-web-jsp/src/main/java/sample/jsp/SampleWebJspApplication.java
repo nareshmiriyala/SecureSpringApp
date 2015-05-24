@@ -5,18 +5,24 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
 public class SampleWebJspApplication extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SampleWebJspApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(applicationClass, args);
+    }
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleWebJspApplication.class, args);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(applicationClass);
+    }
+
+    private static Class<SampleWebJspApplication> applicationClass = SampleWebJspApplication.class;
 
 }

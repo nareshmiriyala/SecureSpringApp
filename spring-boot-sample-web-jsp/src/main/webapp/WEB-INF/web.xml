@@ -11,27 +11,23 @@
         </form-login-config>
     </login-config>
 
-    <security-role>
-        <role-name>USER</role-name>
-    </security-role>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Public</web-resource-name>
-            <description>Matches unconstrained pages</description>
-            <url-pattern>/home</url-pattern>
-            <url-pattern>/logout</url-pattern>
-            <url-pattern>/error</url-pattern>
-            <url-pattern>/resources/*</url-pattern>
-            <url-pattern>/js/*</url-pattern>
-        </web-resource-collection>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Secured Areas</web-resource-name>
+            <web-resource-name>Allow</web-resource-name>
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
-        <auth-constraint>
-            <role-name>USER</role-name>
-        </auth-constraint>
+
     </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restrict</web-resource-name>
+            <url-pattern>/createotp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint><role-name>Manager</role-name></auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>Manager</role-name>
+    </security-role>
+
+
 </web-app>
