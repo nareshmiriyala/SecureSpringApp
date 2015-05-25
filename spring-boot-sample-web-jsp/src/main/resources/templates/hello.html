@@ -3,10 +3,28 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Hello World!</title>
+    <script type="text/javascript">
+        $(window).on("navigate", function (event, data) {
+            var direction = data.state.direction;
+            if (direction == 'back') {
+                $.ajax({
+                    type: "GET",
+                    url: "/logout"
+                });
+            }
+            if (direction == 'forward') {
+                // do something else
+                $.ajax({
+                    type: "GET",
+                    url: "/logout"
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-<form th:action="@{/logout}">
+<form action="/springapp/hello?logout" method="get">
     <input type="submit" value="Sign Out"/>
 </form>
 </body>

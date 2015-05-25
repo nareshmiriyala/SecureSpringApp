@@ -8,6 +8,12 @@
     <script src="../static/js/sample.js" th:src="@{/js/sample.js}"></script>
 </head>
 <body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+    </div>
 <h2>Hello, please log in:</h2>
 <div id="div1"><h2></h2></div>
 <form action="j_security_check" method="post">
